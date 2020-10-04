@@ -18,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -47,6 +48,9 @@ public class MemoActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.memobtn:
                 regMemo();
                 break;
+            case R.id.reguser:
+                writeNewUser();
+                break;
         }
     }
 
@@ -55,6 +59,21 @@ public class MemoActivity extends AppCompatActivity implements View.OnClickListe
         super.onStart();
 
         addChildEvent();
+        addValueEventListener();
+    }
+
+    private void addValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d("cho", "Value="+snapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void regMemo() {
@@ -80,7 +99,7 @@ public class MemoActivity extends AppCompatActivity implements View.OnClickListe
         databaseReference.child("memo").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Log.d("cholingling", "addChildEvent in");
+                Toast.makeText(getApplicationContext(), "새글이 등록됨", Toast.LENGTH_SHORT).show();
                 MemoItem item=snapshot.getValue(MemoItem.class);
 
                 memoItems.add(item);
@@ -111,6 +130,8 @@ public class MemoActivity extends AppCompatActivity implements View.OnClickListe
 
     private void init(){
         memoItems=new ArrayList<>();
+        Button userbtn=(Button)findViewById(R.id.reguser);
+        userbtn.setOnClickListener(this);
 
         username="user_"+new Random().nextInt(1000);
     }
@@ -123,6 +144,15 @@ public class MemoActivity extends AppCompatActivity implements View.OnClickListe
         memoAdapter=new MemoAdapter(memoItems, this, this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(memoAdapter);
+    }
+
+    private void writeNewUser(){
+        UserInfo userInfo=new UserInfo();
+        userInfo.setUserpwd("1234");
+        userInfo.setUsername("홍길이");
+        userInfo.setEmailaddr("hanim0308as12@naver.com");
+
+        databaseReference.child("users").child("cholingling").setValue(userInfo);
     }
 
     @Override
