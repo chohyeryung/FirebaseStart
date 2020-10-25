@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import kr.hs.emirim.cho.firebasestart.authentication.AuthActivity;
+import kr.hs.emirim.cho.firebasestart.firestore.FirestoreActivity;
 import kr.hs.emirim.cho.firebasestart.realtimedb.MemoActivity;
 
 
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button firebaserealdbbtn = (Button) findViewById(R.id.firebaserealtimedbbtn);
         firebaserealdbbtn.setOnClickListener(this);
 
+        Button firebasefirestorebtn=(Button)findViewById(R.id.firebasefirestorebtn);
+        firebasefirestorebtn.setOnClickListener(this);
     }
 
     @Override
@@ -40,6 +43,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.firebaserealtimedbbtn :
                 Intent i2 = new Intent(this, MemoActivity.class);
                 startActivity(i2);
+                break;
+            case R.id.firebasefirestorebtn:
+                Intent i3=new Intent(this, FirestoreActivity.class);
+                startActivity(i3);
                 break;
             default:
                 break;

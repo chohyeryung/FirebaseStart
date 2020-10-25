@@ -2,4 +2,10 @@
     <string name="app_name">파이어베이스 시작</string>
     <string name="firebase_auth">파이어베이스 인증</string>
     <string name="insert_auth">삽입 인증 솔루션</string>
+    <string name="add_data">데이터 추가</string>
+    <string name="set_data">데이터 추가(set)</string>
+    <string name="delete_data">데이터 삭제(문서)</string>
+    <string name="delete_field">데이터 삭제(필드)</string>
+    <string name="select_data">데이터 조회(문서)</string>
+    <string name="select_where_data">데이터 조회(문서-where)</string>
 </resources>
