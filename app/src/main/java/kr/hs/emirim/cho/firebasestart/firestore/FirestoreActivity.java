@@ -1,6 +1,7 @@
 package kr.hs.emirim.cho.firebasestart.firestore;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,11 +13,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
+import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -30,6 +35,7 @@ import kr.hs.emirim.cho.firebasestart.R;
 public class FirestoreActivity extends AppCompatActivity implements View.OnClickListener{
 
     FirebaseFirestore db= null;
+    private ListenerRegistration eventQueryListener = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +53,10 @@ public class FirestoreActivity extends AppCompatActivity implements View.OnClick
         findViewById(R.id.select_data_btn).setOnClickListener(this);
 
         findViewById(R.id.select_where_data_btn).setOnClickListener(this);
+        
+        findViewById(R.id.firestorelistenerdatabtn).setOnClickListener(this);
+
+        findViewById(R.id.querydatabtn).setOnClickListener(this);
         db= FirebaseFirestore.getInstance();
     }
 
@@ -71,7 +81,64 @@ public class FirestoreActivity extends AppCompatActivity implements View.OnClick
             case R.id.select_where_data_btn:
                 selectWhereDoc();
                 break;
+            case R.id.firestorelistenerdatabtn:
+                listenerDoc();
+                break;
+            case R.id.querydatabtn:
+                listenerQueryDoc();
+                break;
         }
+    }
+
+    private void listenerQueryDoc() {
+        Log.e("hi","리스너 쿼리 도큐먼트 시작");
+
+        if(eventQueryListener != null) {
+            return;
+        }
+
+        eventQueryListener =
+                db.collection("users")
+                        .whereEqualTo("id","hong")
+                        .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                            @Override
+                            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                Log.e("hi","ListenerQueryDoc in 1");
+
+                                if(error!=null) {
+                                    Log.e("hi","error : "+error);
+                                    return;
+                                }
+
+                                for (DocumentChange dc : value.getDocumentChanges()) {
+                                    Log.e("hi","Type"+dc.getType());
+                                    switch (dc.getType()) {
+                                        case ADDED:
+                                            Log.e("hi","New city");
+                                    }
+                                }
+                            }
+                        });
+
+    }
+
+    private void listenerDoc() {
+        final DocumentReference docRef=db.collection("users").document("userinfo");
+        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                if(error!=null){
+                    Log.e("hi","Listen failed", error);
+                }
+                if(value!=null && value.exists()){
+                    Log.e("hi","현재 데이터 : "+ value.getData());
+
+                }else{
+                    Log.e("hi","현재 데이터 : null", error);
+
+                }
+            }
+        });
     }
 
     private void selectWhereDoc() {

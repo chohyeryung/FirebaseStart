@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.143" />
+        app:layout_constraintVertical_bias="0.076" />
 
     <Button
         android:id="@+id/setdatabtn"
@@ -25,10 +25,10 @@
         android:text="@string/set_data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/adddatabtn"
-        app:layout_constraintVertical_bias="0.161" />
+        app:layout_constraintVertical_bias="0.051" />
 
     <Button
         android:id="@+id/deletedocbtn"
@@ -49,10 +49,10 @@
         android:text="@string/delete_field"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deletedocbtn"
-        app:layout_constraintVertical_bias="0.205" />
+        app:layout_constraintVertical_bias="0.071" />
 
     <Button
         android:id="@+id/select_data_btn"
@@ -73,6 +73,32 @@
         android:text="@string/select_where_data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/select_data_btn"/>
+        app:layout_constraintTop_toBottomOf="@+id/select_data_btn"
+        app:layout_constraintVertical_bias="0.184" />
+
+    <Button
+        android:id="@+id/firestorelistenerdatabtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="데이터 조회(실시간 업데이트)"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_where_data_btn"
+        app:layout_constraintVertical_bias="0.155" />
+
+    <Button
+        android:id="@+id/querydatabtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="데이터 조회(실시간 업데이트-쿼리)"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firestorelistenerdatabtn"
+        app:layout_constraintVertical_bias="0.155" />
 </androidx.constraintlayout.widget.ConstraintLayout>
