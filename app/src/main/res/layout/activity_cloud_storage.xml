@@ -6,4 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".cloudstorage.CloudStorageActivity">
 
+    <Button
+        android:id="@+id/uploadbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="파일 업로드"
+        app:layout_constraintBottom_toTopOf="@id/downloadbtn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/downloadbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="파일 다운로드"
+        app:layout_constraintTop_toBottomOf="@id/uploadbtn"
+        app:layout_constraintBottom_toTopOf="@id/metainfobtn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+         />
+
+    <Button
+        android:id="@+id/metainfobtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="메타 데이터 사용하기"
+       app:layout_constraintTop_toBottomOf="@id/downloadbtn"
+        app:layout_constraintBottom_toTopOf="@id/deletebtn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <Button
+        android:id="@+id/deletebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="파일 삭제"
+        app:layout_constraintTop_toBottomOf="@id/metainfobtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
