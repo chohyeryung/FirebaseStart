@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
+
 import kr.hs.emirim.cho.firebasestart.authentication.AuthActivity;
 import kr.hs.emirim.cho.firebasestart.cloudstorage.CloudStorageActivity;
 import kr.hs.emirim.cho.firebasestart.cloudstorage.UploadActivity;
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button firebasehostingebtn=(Button)findViewById(R.id.firebasehostingebtn);
         firebasehostingebtn.setOnClickListener(this);
+
+        FirebaseCrashlytics.getInstance().log("안녕하세요~ 크래쉬리틱스님~");
 
     }
 
