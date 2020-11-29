@@ -9,7 +9,10 @@ import android.view.View;
 import android.widget.Button;
 
 import kr.hs.emirim.cho.firebasestart.authentication.AuthActivity;
+import kr.hs.emirim.cho.firebasestart.cloudstorage.CloudStorageActivity;
+import kr.hs.emirim.cho.firebasestart.cloudstorage.UploadActivity;
 import kr.hs.emirim.cho.firebasestart.firestore.FirestoreActivity;
+import kr.hs.emirim.cho.firebasestart.hosting.HostingActivity;
 import kr.hs.emirim.cho.firebasestart.realtimedb.MemoActivity;
 
 
@@ -28,6 +31,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button firebasefirestorebtn=(Button)findViewById(R.id.firebasefirestorebtn);
         firebasefirestorebtn.setOnClickListener(this);
+
+        Button firebasestoragebtn=(Button)findViewById(R.id.firebasestoragebtn);
+        firebasestoragebtn.setOnClickListener(this);
+
+        Button firebasehostingebtn=(Button)findViewById(R.id.firebasehostingebtn);
+        firebasehostingebtn.setOnClickListener(this);
+
     }
 
     @Override
@@ -47,6 +57,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.firebasefirestorebtn:
                 Intent i3=new Intent(this, FirestoreActivity.class);
                 startActivity(i3);
+                break;
+            case R.id.firebasestoragebtn:
+                Intent i4=new Intent(this, CloudStorageActivity.class);
+                startActivity(i4);
+                break;
+            case R.id.firebasehostingebtn:
+                Log.d("MainActivity====>", "파이어베이스 클라우드호스팅 버튼 눌림!");
+                Intent i5=new Intent(this, HostingActivity.class);
+                startActivity(i5);
                 break;
             default:
                 break;

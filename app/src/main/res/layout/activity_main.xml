@@ -35,4 +35,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firebaserealtimedbbtn" />
+
+    <Button
+        android:id="@+id/firebasestoragebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="파이어베이스 스토리지"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firebasefirestorebtn" />
+
+    <Button
+        android:id="@+id/firebasehostingebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="파이어베이스 클라우드 호스팅"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firebasestoragebtn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
