@@ -12,7 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".hosting.HostingActivity"></activity>
+        <activity android:name=".performance.PerformanceActivity"></activity>
+
+        <meta-data
+            android:name="firebase_performance_logcat_enabled"
+            android:value="true" />
+
+        <activity android:name=".hosting.HostingActivity" />
         <activity android:name=".cloudstorage.MetaInfoActivity" />
         <activity android:name=".cloudstorage.UploadActivity" />
         <activity android:name=".cloudstorage.DownloadActivity" />
